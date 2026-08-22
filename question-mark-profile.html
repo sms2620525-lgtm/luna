@@ -1,0 +1,288 @@
+<title>아직 ()입니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap">
+
+<style>
+  :root{
+    --paper:#dedec9;
+    --ink:#17181A;
+    --soft:#63666B;
+    --faint:#6c80a0;
+    --rule:#E5E5E2;
+    --accent:#3A5570;
+    --box:#F2F2EF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141516;
+      --ink:#a8a89f;
+      --soft:#A0A29F;
+      --faint:#6E7073;
+      --rule:#2A2C2D;
+      --accent:#9DB6CE;
+      --box:#1D1F20;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141516;
+    --ink:#E9E9E6;
+    --soft:#A0A29F;
+    --faint:#6E7073;
+    --rule:#2A2C2D;
+    --accent:#9DB6CE;
+    --box:#1D1F20;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+    font-weight:300;
+    font-size:16px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  main{
+    width:min(600px, 88vw);
+    margin-inline:auto;
+    padding:clamp(64px,12vh,132px) 0 96px;
+  }
+
+  h1,h2{margin:0;font-weight:400;text-wrap:balance}
+
+  p{margin:0}
+
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+  a:hover{color:var(--ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  /* --- masthead --- */
+  .mast{display:flex;align-items:center;gap:22px}
+
+  .avatar{
+    width:76px;height:76px;flex:none;
+    border:1px solid var(--rule);
+    background:var(--box);
+    display:grid;place-items:center;
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:300;
+    font-size:36px;
+    line-height:1;
+    color:var(--soft);
+    user-select:none;
+  }
+
+  h1{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:clamp(26px,4.4vw,34px);
+    line-height:1.3;
+    letter-spacing:-.01em;
+  }
+  .sub{color:var(--faint);font-size:13.5px;line-height:1.6;margin-top:4px}
+
+  /* --- blocks --- */
+  .block{margin-top:52px;padding-top:0}
+  .block + .block{border-top:1px solid var(--rule);padding-top:44px;margin-top:44px}
+
+  h2{
+    font-size:13px;
+    letter-spacing:.09em;
+    color:var(--faint);
+    font-weight:400;
+    margin-bottom:18px;
+  }
+
+  .lead{font-size:18px;line-height:1.8;font-weight:300}
+  .body{color:var(--soft);margin-top:14px}
+  strong{font-weight:500;color:var(--ink)}
+
+  /* --- list of traits --- */
+  dl{margin:0;display:grid;gap:16px}
+  .row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:18px;align-items:baseline}
+  dt{font-weight:400;color:var(--ink)}
+  dd{margin:0;color:var(--soft)}
+  dd em{font-style:normal;display:block;color:var(--faint);font-size:12.5px;line-height:1.6;margin-top:2px}
+
+  /* --- pull quote --- */
+  blockquote{
+    margin:0;
+    font-family:"Newsreader",Georgia,serif;
+    font-size:21px;
+    line-height:1.65;
+    font-weight:300;
+    letter-spacing:-.005em;
+  }
+  blockquote span{display:block;font-family:inherit;font-style:italic;font-size:15px;color:var(--faint);margin-top:12px}
+
+  /* --- picker --- */
+  .picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .pick{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:17px;
+    width:40px;height:40px;
+    display:grid;place-items:center;
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--soft);
+    cursor:pointer;
+    transition:border-color .15s, color .15s;
+  }
+  .pick:hover{border-color:var(--soft);color:var(--ink)}
+  .pick[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+  .note{color:var(--faint);font-size:13px;margin-top:14px}
+
+  /* --- contact --- */
+  .mail{
+    font-size:19px;
+    font-weight:400;
+    letter-spacing:-.005em;
+    word-break:break-all;
+  }
+  .copy{
+    background:none;border:0;padding:0;
+    font-family:inherit;font-size:13px;color:var(--faint);
+    cursor:pointer;margin-top:10px;
+  }
+  .copy:hover{color:var(--ink)}
+
+  footer{
+    margin-top:64px;padding-top:22px;
+    border-top:1px solid var(--rule);
+    color:var(--faint);font-size:12.5px;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  @media (max-width:480px){
+    .row{grid-template-columns:1fr;gap:2px}
+    .mast{gap:16px}
+    .avatar{width:60px;height:60px;font-size:28px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
+</style>
+
+<main>
+
+  <div class="mast">
+    <div class="avatar" id="avatar" aria-label="프로필 사진 자리, 아직 미정">?</div>
+    <div>
+      <h1>저는 입니다</h1>
+      <p class="sub">Still a question mark — 유료 AI와 언어 몇 가지, 그리고 재미</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="lead">
+      유료 AI는 종류를 가리지 않고 씁니다. 언어도 여러 개 다뤄서 말이 통하는 범위가 넓은 편입니다.
+    </p>
+    <p class="body">
+      대단한 사람은 아닙니다. 거창한 비전도 없습니다.
+      그저 <strong>재미</strong>와 <strong>약간의 돈</strong>을 밝히는 사람입니다.
+      평소엔 장난처럼 웃고 넘깁니다
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>이런 사람입니다</h2>
+    <dl>
+      <div class="row">
+        <dt>재미</dt>
+        <dd>재미없으면 오래 못 합니다. 재미있으면 밤새도 합니다.
+          <em>Fun first — it's the main reason I show up.</em></dd>
+      </div>
+      <div class="row">
+        <dt>약간의 돈</dt>
+        <dd>솔직히 돈도 좋습니다. 다만 '조금'이면 충분합니다.
+          <em>A little money is enough. Not chasing more than that.</em></dd>
+      </div>
+      <div class="row">
+        <dt>진지함</dt>
+        <dd>중요한 결정 앞에서는 농담을 멈춥니다. 켜야 할 때 확실히 켜집니다.
+          <em>Serious when it counts, and only then.</em></dd>
+      </div>
+      <div class="row">
+        <dt>도구</dt>
+        <dd>유료 AI 다수, 다국어.
+          <em>Several paid AI tools, several languages.</em></dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h2>원하는 팀</h2>
+    <blockquote>
+      상사와 부하가 아니라, 친구 같은 팀이면 좋겠습니다. 웃으며 장난치다가도 할 때는 제대로 하는 사람들.
+      <span>Not a chain of command — a team that feels like friends.</span>
+    </blockquote>
+  </div>
+
+  <div class="block">
+    <h2>프로필 사진</h2>
+    <p class="body" style="margin-top:0">
+      제 프로필 사진 자리는 아직 <strong>?</strong> 입니다.
+      팀을 제안해 주신 분들이 여기에 무엇이 들어갈지 고를 수 있습니다.
+    </p>
+    <div class="picker" role="group" aria-label="프로필 후보 미리보기">
+      <button class="pick" aria-pressed="true" data-g="?">?</button>
+      <button class="pick" aria-pressed="false" data-g="!">!</button>
+      <button class="pick" aria-pressed="false" data-g="&amp;">&amp;</button>
+      <button class="pick" aria-pressed="false" data-g="L">L</button>
+      <button class="pick" aria-pressed="false" data-g="ㅇ">ㅇ</button>
+    </div>
+    <p class="note">미리보기일 뿐, 결정은 제안하신 분 몫입니다.<br>
+      The slot is yours to fill — tap to preview.</p>
+  </div>
+
+  <div class="block">
+    <h2>팀 제안</h2>
+    <p class="mail"><a href="mailto:luna303942@proton.me?subject=%ED%8C%80%20%EC%A0%9C%EC%95%88">luna303942@proton.me</a></p>
+    <p class="body" style="margin-top:8px">제안, 잡담, 아무 말이나 환영합니다. 메일 한 통이면 충분합니다.</p>
+    <button class="copy" id="copy">주소 복사</button>
+  </div>
+
+  <footer>
+    <span>팀 모집 중</span>
+    <span>luna303942@proton.me</span>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var avatar = document.getElementById('avatar');
+    var picks = document.querySelectorAll('.pick');
+    picks.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        picks.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        avatar.textContent = btn.dataset.g;
+      });
+    });
+
+    var copy = document.getElementById('copy');
+    copy.addEventListener('click', function () {
+      var addr = 'luna303942@proton.me';
+      var done = function () {
+        copy.textContent = '복사됨';
+        setTimeout(function () { copy.textContent = '주소 복사'; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(addr).then(done, done);
+      } else {
+        var t = document.createElement('textarea');
+        t.value = addr;
+        document.body.appendChild(t);
+        t.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(t);
+        done();
+      }
+    });
+  })();
+</script>
